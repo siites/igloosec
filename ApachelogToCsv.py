@@ -16,13 +16,13 @@ class Check():
     def __init__(self, gotext):
             self.gotext = gotext
             self.result_arrry =[]
-          
+
     def checkList(self):
             gotext = self.gotext.split('\n')
             goarray = []
             title = ["ip", "date","request","user agent"]
             goarray.append(title)
-            
+
             for goline in gotext:
                 rawdata1 = goline.split(" - - [")
                 ipaddr = rawdata1[0]
@@ -35,8 +35,8 @@ class Check():
                 goarray.append(temparray)
 
             return goarray
-                    
-    
+
+
 def fileopen(filename):
     text =""
     print filename
@@ -47,7 +47,7 @@ def fileopen(filename):
     except Exception as inst:
         print "file retry error:" + str(inst)
     return text
-        
+
 def main():
     try:
         folder = str(sys.argv[1])
@@ -66,10 +66,10 @@ def main():
 
                     for gorata in dataArr:
                         f.write(gorata[0]+", " +gorata[1]+", "+gorata[2] +", "+gorata[3]+"\n")
-            print "\nCreate Csv File!!!"            
+            print "\nCreate Csv File!!!"
         except Exception as inst:
             print  str(inst.args)
-            pass 
+            pass
 
     except IOError:
         print 'no such directory'
